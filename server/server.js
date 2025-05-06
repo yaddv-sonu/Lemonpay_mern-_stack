@@ -2,7 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-
+import authRoutes from './routes/authRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -13,6 +14,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
 
 
 // Error handling middleware
@@ -36,6 +40,7 @@ const connectDB = async () => {
     return false;
   }
 };
+
 
 // Start server function
 const startServer = async () => {

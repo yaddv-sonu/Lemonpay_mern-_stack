@@ -4,7 +4,7 @@ import { registerUser, loginUser } from '../controllers/authController.js';
 
 const router = express.Router();
 
-router.post('/register', [
+router.post('/signup', [
   body('email').isEmail(),
   body('password').isLength({ min: 6 })
 ], registerUser);
