@@ -76,7 +76,7 @@ export default function Signup() {
                                 <label className="flex items-center text-white/80 text-base">
                                     <input type="checkbox" className="mr-2 accent-white" /> Remember me
                                 </label>
-                                <a href="#" className="text-white/80 text-base hover:underline">Sign In</a>
+                                <a href="/login" className="text-white/80 text-base hover:underline">Sign In</a>
                             </div>
                             <button
                                 type="submit"
