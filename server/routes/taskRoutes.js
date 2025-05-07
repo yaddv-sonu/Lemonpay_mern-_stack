@@ -18,8 +18,8 @@ const router = express.Router();
 // Apply auth middleware to all routes
 router.use(authMiddleware);
 
-// Create task
-router.post('/', validateCreateTask, createTask);
+// ✅ Corrected Create Task Route
+router.post('/createTask', validateCreateTask, createTask);
 
 // Get all tasks with filtering and pagination
 router.get('/', validateTaskQuery, getTasks);

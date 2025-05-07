@@ -38,7 +38,7 @@ export default function Signup() {
 
         setLoading(true);
         try {
-            const response = await fetch("http://localhost:5000/api/auth/signup", {
+            const response = await fetch("https://backend-2-cidd.onrender.com/api/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -50,12 +50,12 @@ export default function Signup() {
 
             if (!response.ok) {
                 setError(result.message || "Failed to register");
-                router.push("/login");
                 
             } else {
                 setSuccess("Registration successful!");
                 setSignupData({ name: "", email: "", password: "" });
                 setConfirmPassword("");
+                router.push("/login");
             }
         } catch (err: any) {
             setError("Network error or server not reachable.");
