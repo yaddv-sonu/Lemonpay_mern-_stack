@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface SignupData {
@@ -18,7 +17,6 @@ export default function Signup() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +34,6 @@ export default function Signup() {
             return;
         }
 
-        setLoading(true);
         try {
             const response = await fetch("https://backend-2-cidd.onrender.com/api/auth/signup", {
                 method: "POST",
@@ -57,18 +54,16 @@ export default function Signup() {
                 setConfirmPassword("");
                 router.push("/login");
             }
-        } catch (err: any) {
+        } catch  {
             setError("Network error or server not reachable.");
-        } finally {
-            setLoading(false);
-        }
+        } 
     };
 
 
 
     return (
         <div
-            className="h-screen flex flex-col justify-center relative overflow-hidden p-4 md:p-20"
+            className=" flex flex-col justify-center relative overflow-hidden p-4 md:p-20"
             style={{
                 background:
                     "linear-gradient(135deg, #ffffff 0%, #dbe3fc 15%, #8eaefc 40%, #5d73db 70%, #3f2f94 100%)",
@@ -79,7 +74,7 @@ export default function Signup() {
             <div className="absolute left-[-80px] bottom-[60px] w-[200px] h-[180px] md:left-[-110px] md:bottom-[-100px] md:w-[230px] md:h-[230px] bg-[#b3c6f7] rounded-full opacity-60 z-0" />
             <div className="hidden md:block absolute left-[650px] -translate-x-1/2 bottom-[-110px] w-[240px] h-[240px] bg-[#e0d2f7] rounded-full opacity-30 z-0" />
 
-            <div className="flex flex-col items-center md:items-start w-full">
+            <div className=" flex flex-col items-center md:items-start w-full">
                 <img src="/logo.svg" alt="Lemonpay Logo" className="h-16 w-auto mb-2" />
             </div>
 
